@@ -1,0 +1,27 @@
+[package]
+name = "rust-riscv-playground"
+version = "0.1.0"
+authors = ["Edward-0 <23418164+Edward-0@users.noreply.github.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+embedded-hal = "0.2.3"
+hifive1 = { version = "0.8.0", features = ["board-hifive1-revb"] }
+#hifive1 = "0.8.0"
+panic-halt = "0.2.0"
+riscv = "0.5.3"
+riscv-rt = "0.6.0"
+e310x-hal = "0.8.0"
+
+# this lets you use `cargo fix`!
+[[bin]]
+name = "rust-riscv-playground"
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations
